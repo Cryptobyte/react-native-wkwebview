@@ -146,6 +146,7 @@ RCT_NOT_IMPLEMENTED(- (instancetype)initWithCoder:(NSCoder *)aDecoder)
   if (request.URL && _sendCookies) {
     NSDictionary *cookies = [NSHTTPCookie requestHeaderFieldsWithCookies:[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:request.URL]];
     if ([cookies objectForKey:@"Cookie"]) {
+      NSLog(@"COOKIE: %s", cookies[@"Cookie"]);
       NSMutableURLRequest *mutableRequest = request.mutableCopy;
       [mutableRequest addValue:cookies[@"Cookie"] forHTTPHeaderField:@"Cookie"];
       request = mutableRequest;
